@@ -54,6 +54,7 @@ const FormExample: React.FC = () => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           invalid={formik.touched.email && Boolean(formik.errors.email)}
+          valid={formik.touched.email && !Boolean(formik.errors.email)}
         />
         {formik.touched.email && formik.errors.email && (
           <div className="text-danger">{formik.errors.email}</div>
@@ -69,6 +70,7 @@ const FormExample: React.FC = () => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           invalid={formik.touched.password && Boolean(formik.errors.password)}
+          valid={formik.touched.password && !Boolean(formik.errors.password)}
         />
         {formik.touched.password && formik.errors.password && (
           <div className="text-danger">{formik.errors.password}</div>
