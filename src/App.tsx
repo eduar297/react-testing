@@ -1,11 +1,23 @@
 import { StoreProvider } from './contexts';
 
-import { Test } from './pages';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+
+import { Layout } from './components';
+
+import routes from './routes';
 
 const App: React.FC = () => {
   return (
     <StoreProvider>
-      <Test />
+      <BrowserRouter>
+        <Layout>
+          <Routes>
+            {routes.map((route) => (
+              <Route {...route} />
+            ))}
+          </Routes>
+        </Layout>
+      </BrowserRouter>
     </StoreProvider>
   );
 };

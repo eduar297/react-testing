@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useStore } from '../../hooks';
 
@@ -11,11 +11,7 @@ const Test: React.FC = () => {
     setHelloText('Hello World!!!');
   }, []);
 
-  return (
-    <div>
-      <SayHi helloText={helloText} />
-    </div>
-  );
+  return <SayHi helloText={helloText} />;
 };
 
 export default Test;

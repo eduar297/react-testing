@@ -3,7 +3,7 @@ type SayHiProps = {
 };
 
 const SayHi = ({ helloText }: SayHiProps) => {
-  return <p>{helloText}</p>;
+  return <h1>{helloText}</h1>;
 };
 
 export default SayHi;
