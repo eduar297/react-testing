@@ -1,4 +1,4 @@
-import { Home, Test } from './pages';
+import { FormExample, Home, Test } from './pages';
 
 const routes = [
   {
@@ -15,7 +15,7 @@ const routes = [
   },
   {
     path: '/form-example',
-    element: <h1>Form example</h1>,
+    element: <FormExample />,
   },
 ];
 
