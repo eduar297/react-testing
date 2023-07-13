@@ -1,4 +1,4 @@
-import { FormExample, Home, Test } from './pages';
+import { FetchExample, FormExample, Home, Test } from './pages';
 
 const routes = [
   {
@@ -11,7 +11,7 @@ const routes = [
   },
   {
     path: '/fetch-example',
-    element: <h1>Fetch example</h1>,
+    element: <FetchExample />,
   },
   {
     path: '/form-example',
