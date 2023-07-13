@@ -1,4 +1,4 @@
-import { FetchExample, FormExample, Home, Test } from './pages';
+import { PokemonExample, FormExample, Home, Test } from './pages';
 
 const routes = [
   {
@@ -10,8 +10,8 @@ const routes = [
     element: <Test />,
   },
   {
-    path: '/fetch-example',
-    element: <FetchExample />,
+    path: '/pokemon-example',
+    element: <PokemonExample />,
   },
   {
     path: '/form-example',

@@ -37,8 +37,8 @@ const Navbar = () => {
               <Link to="/test" style={{ textDecoration: 'none' }}>
                 <DropdownItem>Test</DropdownItem>
               </Link>
-              <Link to="/fetch-example" style={{ textDecoration: 'none' }}>
-                <DropdownItem>Fetch example</DropdownItem>
+              <Link to="/pokemon-example" style={{ textDecoration: 'none' }}>
+                <DropdownItem>Pokemon example</DropdownItem>
               </Link>
               <Link to="/form-example" style={{ textDecoration: 'none' }}>
                 <DropdownItem>Form example</DropdownItem>

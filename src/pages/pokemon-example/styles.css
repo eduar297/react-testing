@@ -1,0 +1,24 @@
+tr {
+  transition: transform 0.3s ease-in-out;
+}
+
+tr img {
+  transform: scale(1);
+}
+
+tr:hover img {
+  transform: scale(2);
+  animation: vibrate 0.6s infinite;
+}
+
+@keyframes vibrate {
+  0% {
+    transform: translateX(-2px) scale(3);
+  }
+  50% {
+    transform: translateX(2px) scale(3);
+  }
+  100% {
+    transform: translateX(-2px) scale(3);
+  }
+}
