@@ -21,7 +21,11 @@ const Navbar = () => {
 
   return (
     <NavbarReactrap color="dark" dark expand="md">
-      <NavbarBrand href="/">React Testing</NavbarBrand>
+      <NavbarBrand>
+        <Link to="/" style={{ textDecoration: 'none' }}>
+          React Testing
+        </Link>
+      </NavbarBrand>
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
         <Nav className="me-auto" navbar>
@@ -30,11 +34,14 @@ const Navbar = () => {
               Pages
             </DropdownToggle>
             <DropdownMenu right>
-              <Link to="/test">
+              <Link to="/test" style={{ textDecoration: 'none' }}>
                 <DropdownItem>Test</DropdownItem>
               </Link>
-              <Link to="/page2">
-                <DropdownItem>Page 2</DropdownItem>
+              <Link to="/fetch-example" style={{ textDecoration: 'none' }}>
+                <DropdownItem>Fetch example</DropdownItem>
+              </Link>
+              <Link to="/form-example" style={{ textDecoration: 'none' }}>
+                <DropdownItem>Form example</DropdownItem>
               </Link>
             </DropdownMenu>
           </UncontrolledDropdown>
