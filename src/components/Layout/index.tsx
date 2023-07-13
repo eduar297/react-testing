@@ -14,7 +14,7 @@ function Layout({ children }: LayoutProps) {
     <>
       <Navbar />
       <Container fluid>
-        <div className="m-3 border-dashed border-primary-subtle">{children}</div>
+        <div className="m-3 border border-primary-subtle">{children}</div>
       </Container>
     </>
   );
