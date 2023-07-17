@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { Layout } from './components';
 
-import routes from './routes';
+import { routerArray } from './routes';
 
 const App: React.FC = () => {
   return (
@@ -12,7 +12,7 @@ const App: React.FC = () => {
       <BrowserRouter>
         <Layout>
           <Routes>
-            {routes.map((route) => (
+            {routerArray.map((route) => (
               <Route {...route} />
             ))}
           </Routes>

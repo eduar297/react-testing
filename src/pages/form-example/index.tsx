@@ -1,7 +1,14 @@
 import React from 'react';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import {
+  Button,
+  Form,
+  FormCheck,
+  FormControl,
+  FormGroup,
+  FormLabel,
+} from 'react-bootstrap';
 
 interface FormValues {
   email: string;
@@ -14,7 +21,7 @@ const validationSchema = yup.object({
   email: yup
     .string()
     .typeError('Enter an email address')
-    .email('Enter a valid email address')
+    .email('Please enter a valid email address')
     .required('Email address is required'),
   password: yup
     .string()
@@ -25,7 +32,7 @@ const validationSchema = yup.object({
   gender: yup
     .string()
     .oneOf(['male', 'female', 'other'])
-    .required('Gender is required'),
+    .required('Gender is mandatory'),
 });
 
 const FormExample: React.FC = () => {
@@ -44,103 +51,92 @@ const FormExample: React.FC = () => {
 
   return (
     <Form onSubmit={formik.handleSubmit}>
-      <FormGroup>
-        <Label for="email">Email address</Label>
-        <Input
+      <FormGroup controlId="email">
+        <FormLabel>Email address</FormLabel>
+        <FormControl
           type="email"
-          id="email"
           name="email"
           value={formik.values.email}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          invalid={formik.touched.email && Boolean(formik.errors.email)}
-          valid={formik.touched.email && !Boolean(formik.errors.email)}
+          isInvalid={formik.touched.email && Boolean(formik.errors.email)}
+          isValid={formik.touched.email && !Boolean(formik.errors.email)}
         />
         {formik.touched.email && formik.errors.email && (
-          <div className="text-danger">{formik.errors.email}</div>
+          <FormControl.Feedback type="invalid">
+            {formik.errors.email}
+          </FormControl.Feedback>
         )}
       </FormGroup>
-      <FormGroup>
-        <Label for="password">Password</Label>
-        <Input
+      <FormGroup controlId="password">
+        <FormLabel>Password</FormLabel>
+        <FormControl
           type="password"
-          id="password"
           name="password"
           value={formik.values.password}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          invalid={formik.touched.password && Boolean(formik.errors.password)}
-          valid={formik.touched.password && !Boolean(formik.errors.password)}
+          isInvalid={formik.touched.password && Boolean(formik.errors.password)}
+          isValid={formik.touched.password && !Boolean(formik.errors.password)}
         />
         {formik.touched.password && formik.errors.password && (
-          <div className="text-danger">{formik.errors.password}</div>
+          <FormControl.Feedback type="invalid">
+            {formik.errors.password}
+          </FormControl.Feedback>
         )}
       </FormGroup>
-      <FormGroup check>
-        <Label check>
-          <Input
-            type="checkbox"
-            id="rememberMe"
-            name="rememberMe"
-            checked={formik.values.rememberMe}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
-          Remember me
-        </Label>
+      <FormGroup controlId="rememberMe">
+        <FormCheck
+          type="checkbox"
+          name="rememberMe"
+          label="Remember me"
+          checked={formik.values.rememberMe}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+        />
       </FormGroup>
-      <FormGroup tag="fieldset">
-        <legend>Gender</legend>
-        <FormGroup check>
-          <Label check>
-            <Input
-              type="radio"
-              id="male"
-              name="gender"
-              value="male"
-              checked={formik.values.gender === 'male'}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              invalid={formik.touched.gender && Boolean(formik.errors.gender)}
-            />
-            Male
-          </Label>
-        </FormGroup>
-        <FormGroup check>
-          <Label check>
-            <Input
-              type="radio"
-              id="female"
-              name="gender"
-              value="female"
-              checked={formik.values.gender === 'female'}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              invalid={formik.touched.gender && Boolean(formik.errors.gender)}
-            />
-            Female
-          </Label>
-        </FormGroup>
-        <FormGroup check>
-          <Label check>
-            <Input
-              type="radio"
-              id="other"
-              name="gender"
-              value="other"
-              checked={formik.values.gender === 'other'}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              invalid={formik.touched.gender && Boolean(formik.errors.gender)}
-            />
-            Other
-          </Label>
-        </FormGroup>
+      <FormGroup>
+        <FormLabel>Gender</FormLabel>
+        <FormCheck
+          type="radio"
+          id="male"
+          name="gender"
+          value="male"
+          label="Male"
+          checked={formik.values.gender === 'male'}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          isInvalid={formik.touched.gender && Boolean(formik.errors.gender)}
+        />
+        <FormCheck
+          type="radio"
+          id="female"
+          name="gender"
+          value="female"
+          label="Female"
+          checked={formik.values.gender === 'female'}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          isInvalid={formik.touched.gender && Boolean(formik.errors.gender)}
+        />
+        <FormCheck
+          type="radio"
+          id="other"
+          name="gender"
+          value="other"
+          label="Other"
+          checked={formik.values.gender === 'other'}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          isInvalid={formik.touched.gender && Boolean(formik.errors.gender)}
+        />
         {formik.touched.gender && formik.errors.gender && (
-          <div className="text-danger">{formik.errors.gender}</div>
+          <FormControl.Feedback type="invalid">
+            {formik.errors.gender}
+          </FormControl.Feedback>
         )}
       </FormGroup>
-      <Button color="primary" type="submit">
+      <Button variant="primary" type="submit">
         Submit
       </Button>
     </Form>

@@ -1,18 +1,17 @@
 import { useState } from 'react';
 
+import { router, basicsArrayRouter, pagesArrayRouter } from '../../routes';
+
 import { Link } from 'react-router-dom';
 
 import {
   Collapse,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
+  Container,
+  Dropdown,
   Nav,
-  Navbar as NavbarReactrap,
-  NavbarBrand,
-  NavbarToggler,
-  UncontrolledDropdown,
-} from 'reactstrap';
+  Navbar as NavbarReactBootstrap,
+  NavDropdown,
+} from 'react-bootstrap';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,34 +19,43 @@ const Navbar = () => {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <NavbarReactrap color="dark" dark expand="md">
-      <NavbarBrand>
-        <Link to="/" style={{ textDecoration: 'none' }}>
-          React Testing
-        </Link>
-      </NavbarBrand>
-      <NavbarToggler onClick={toggle} />
-      <Collapse isOpen={isOpen} navbar>
-        <Nav className="me-auto" navbar>
-          <UncontrolledDropdown nav inNavbar>
-            <DropdownToggle nav caret>
-              Pages
-            </DropdownToggle>
-            <DropdownMenu right>
-              <Link to="/test" style={{ textDecoration: 'none' }}>
-                <DropdownItem>Test</DropdownItem>
-              </Link>
-              <Link to="/pokemon-example" style={{ textDecoration: 'none' }}>
-                <DropdownItem>Pokemon example</DropdownItem>
-              </Link>
-              <Link to="/form-example" style={{ textDecoration: 'none' }}>
-                <DropdownItem>Form example</DropdownItem>
-              </Link>
-            </DropdownMenu>
-          </UncontrolledDropdown>
-        </Nav>
-      </Collapse>
-    </NavbarReactrap>
+    <NavbarReactBootstrap bg="dark" variant="dark" expand="md">
+      <Container fluid>
+        <NavbarReactBootstrap.Brand>
+          <Link
+            to={router.basicsRouter.home.path}
+            style={{ textDecoration: 'none' }}
+          >
+            {router.basicsRouter.home.name}
+          </Link>
+        </NavbarReactBootstrap.Brand>
+        <NavbarReactBootstrap.Toggle onClick={toggle} />
+        <Collapse in={isOpen}>
+          <NavbarReactBootstrap.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto">
+              <NavDropdown title="Examples" id="collasible-nav-dropdown">
+                {basicsArrayRouter.map((route) => (
+                  <Dropdown.Item key={`pagesArrayRouter-${route.name}`}>
+                    <Link to={route.path} style={{ textDecoration: 'none' }}>
+                      {route.name}
+                    </Link>
+                  </Dropdown.Item>
+                ))}
+              </NavDropdown>
+              <NavDropdown title="Pages" id="collasible-nav-dropdown">
+                {pagesArrayRouter.map((route) => (
+                  <Dropdown.Item key={`pagesArrayRouter-${route.name}`}>
+                    <Link to={route.path} style={{ textDecoration: 'none' }}>
+                      {route.name}
+                    </Link>
+                  </Dropdown.Item>
+                ))}
+              </NavDropdown>
+            </Nav>
+          </NavbarReactBootstrap.Collapse>
+        </Collapse>
+      </Container>
+    </NavbarReactBootstrap>
   );
 };
 

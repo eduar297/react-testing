@@ -1,11 +1,11 @@
 import React from 'react';
-import { Table, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
+import { Table, Pagination } from 'react-bootstrap';
 import { usePokemons } from './hooks/usePokemons.hook';
 
 import './styles.css';
-import { Loading } from './components';
+import { Loading } from '../../components';
 
-const FetchExample: React.FC = () => {
+const PokemonExample: React.FC = () => {
   const {
     pokemons,
     loading,
@@ -73,35 +73,35 @@ const FetchExample: React.FC = () => {
           </div>
 
           <Pagination size="sm" aria-label="Page navigation example">
-            <PaginationItem disabled={!prevUrl}>
-              <PaginationLink first onClick={() => handlePageChange(1)} />
-            </PaginationItem>
+            <Pagination.First
+              disabled={!prevUrl}
+              onClick={() => handlePageChange(1)}
+            />
 
-            <PaginationItem disabled={!prevUrl}>
-              <PaginationLink
-                previous
-                onClick={() => handlePageChange(page - 1)}
-              />
-            </PaginationItem>
+            <Pagination.Prev
+              disabled={!prevUrl}
+              onClick={() => handlePageChange(page - 1)}
+            />
 
             {[...Array(endPage - startPage + 1)].map((_, i) => (
-              <PaginationItem key={i} active={startPage + i === page}>
-                <PaginationLink onClick={() => handlePageChange(startPage + i)}>
-                  {startPage + i}
-                </PaginationLink>
-              </PaginationItem>
+              <Pagination.Item
+                key={i}
+                active={startPage + i === page}
+                onClick={() => handlePageChange(startPage + i)}
+              >
+                {startPage + i}
+              </Pagination.Item>
             ))}
 
-            <PaginationItem disabled={!nextUrl}>
-              <PaginationLink next onClick={() => handlePageChange(page + 1)} />
-            </PaginationItem>
+            <Pagination.Next
+              disabled={!nextUrl}
+              onClick={() => handlePageChange(page + 1)}
+            />
 
-            <PaginationItem disabled={!nextUrl}>
-              <PaginationLink
-                last
-                onClick={() => handlePageChange(totalPages)}
-              />
-            </PaginationItem>
+            <Pagination.Last
+              disabled={!nextUrl}
+              onClick={() => handlePageChange(totalPages)}
+            />
           </Pagination>
         </>
       )}
@@ -109,4 +109,4 @@ const FetchExample: React.FC = () => {
   );
 };
 
-export default FetchExample;
+export default PokemonExample;
