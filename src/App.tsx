@@ -1,10 +1,9 @@
-import { StoreProvider } from './contexts';
-
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { Layout } from './components';
 
-import { routerArray } from './routes';
+import { basicsRouterArray, pagesRouterArray } from './routes';
+import { StoreProvider } from './contexts';
 
 const App: React.FC = () => {
   return (
@@ -12,8 +11,19 @@ const App: React.FC = () => {
       <BrowserRouter>
         <Layout>
           <Routes>
-            {routerArray.map((route) => (
-              <Route {...route} />
+            {basicsRouterArray.map((route) => (
+              <Route
+                key={route.name}
+                path={route.path}
+                element={route.element}
+              />
+            ))}
+            {pagesRouterArray.map((route) => (
+              <Route
+                key={route.name}
+                path={route.path}
+                element={route.element}
+              />
             ))}
           </Routes>
         </Layout>

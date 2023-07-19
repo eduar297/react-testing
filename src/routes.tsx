@@ -1,14 +1,15 @@
-import { PokemonExample, FormExample, Home, Test, Page1 } from './pages';
+import { PokemonExample, FormExample, Home, Test, RfqCreate } from './pages';
 
 type TRoute = {
   name: string;
   path: string;
   element: JSX.Element;
+  children?: TRoute[];
 };
 
 type TBasicRouter = 'home' | 'test' | 'pokemonExample' | 'formExample';
 
-type TPageRouter = 'page1';
+type TPageRouter = 'rfq';
 
 const basicsRouter: Record<TBasicRouter, TRoute> = {
   home: {
@@ -34,20 +35,14 @@ const basicsRouter: Record<TBasicRouter, TRoute> = {
 };
 
 const pagesRouter: Record<TPageRouter, TRoute> = {
-  page1: {
-    name: 'Page 1',
-    path: '/pages/page1',
-    element: <Page1 />,
+  rfq: {
+    name: 'rfq',
+    path: '/rfq-create',
+    element: <RfqCreate />,
   },
 };
 
-const router = {
-  basicsRouter,
-  pagesRouter,
-};
+const basicsRouterArray = Object.values(basicsRouter);
+const pagesRouterArray = Object.values(pagesRouter);
 
-const basicsArrayRouter = Object.values(basicsRouter);
-const pagesArrayRouter = Object.values(pagesRouter);
-const routerArray = [...basicsArrayRouter, ...pagesArrayRouter];
-
-export { router, basicsArrayRouter, pagesArrayRouter, routerArray };
+export { basicsRouter, pagesRouter, basicsRouterArray, pagesRouterArray };

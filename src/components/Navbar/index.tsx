@@ -1,6 +1,10 @@
 import { useState } from 'react';
 
-import { router, basicsArrayRouter, pagesArrayRouter } from '../../routes';
+import {
+  basicsRouter,
+  basicsRouterArray,
+  pagesRouterArray,
+} from '../../routes';
 
 import { Link } from 'react-router-dom';
 
@@ -22,11 +26,8 @@ const Navbar = () => {
     <NavbarReactBootstrap bg="dark" variant="dark" expand="md">
       <Container fluid>
         <NavbarReactBootstrap.Brand>
-          <Link
-            to={router.basicsRouter.home.path}
-            style={{ textDecoration: 'none' }}
-          >
-            {router.basicsRouter.home.name}
+          <Link to={basicsRouter.home.path} style={{ textDecoration: 'none' }}>
+            {basicsRouter.home.name}
           </Link>
         </NavbarReactBootstrap.Brand>
         <NavbarReactBootstrap.Toggle onClick={toggle} />
@@ -34,8 +35,8 @@ const Navbar = () => {
           <NavbarReactBootstrap.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <NavDropdown title="Examples" id="collasible-nav-dropdown">
-                {basicsArrayRouter.map((route) => (
-                  <Dropdown.Item key={`pagesArrayRouter-${route.name}`}>
+                {basicsRouterArray.map((route) => (
+                  <Dropdown.Item key={`basicsArrayRouter-${route.name}`}>
                     <Link to={route.path} style={{ textDecoration: 'none' }}>
                       {route.name}
                     </Link>
@@ -43,7 +44,7 @@ const Navbar = () => {
                 ))}
               </NavDropdown>
               <NavDropdown title="Pages" id="collasible-nav-dropdown">
-                {pagesArrayRouter.map((route) => (
+                {pagesRouterArray.map((route) => (
                   <Dropdown.Item key={`pagesArrayRouter-${route.name}`}>
                     <Link to={route.path} style={{ textDecoration: 'none' }}>
                       {route.name}
