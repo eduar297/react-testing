@@ -13,7 +13,7 @@ function Layout({ children }: LayoutProps) {
     <>
       <Navbar />
       <Container fluid>
-        <div className="m-3 p-3 border border-primary-subtle">{children}</div>
+        <div className="m-2 p-2 border border-primary-subtle">{children}</div>
       </Container>
     </>
   );

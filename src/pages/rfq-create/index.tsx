@@ -1,24 +1,34 @@
-import { Container, Form, Tab, Tabs } from 'react-bootstrap';
-
 import { RfqTab, CustomerTab } from './components';
+import { Container } from './components/UI';
+import Accordion, {
+  AccordionBody,
+  AccordionHeader,
+  AccordionItem,
+} from './components/UI/Accordion';
 
-import { useRfqForm } from './useRfqForm.hook';
+import useRfqForm from './components/Rfq/useRfqForm.hook';
+import useCustomerForm from './components/Customer/useCustomerForm.hook';
 
 const RfqCreate: React.FC = () => {
-  const { formik } = useRfqForm();
+  const { rfqFormik } = useRfqForm();
+  const { customerFormik } = useCustomerForm();
 
   return (
     <Container fluid>
-      <Form onSubmit={formik.handleSubmit} id="rfq-form">
-        <Tabs defaultActiveKey="rfq" id="rdq-tabs" variant="tabs">
-          <Tab eventKey="rfq" title="Rfq">
-            <RfqTab formik={formik} />
-          </Tab>
-          <Tab eventKey="customer" title="Customer">
-            <CustomerTab formik={formik} />
-          </Tab>
-        </Tabs>
-      </Form>
+      <Accordion defaultActiveKey="customer" alwaysOpen={false}>
+        <AccordionItem eventKey="rfq">
+          <AccordionHeader>Rfq</AccordionHeader>
+          <AccordionBody>
+            <RfqTab formik={rfqFormik} />
+          </AccordionBody>
+        </AccordionItem>
+        <AccordionItem eventKey="customer">
+          <AccordionHeader>Customer</AccordionHeader>
+          <AccordionBody>
+            <CustomerTab formik={customerFormik} />
+          </AccordionBody>
+        </AccordionItem>
+      </Accordion>
     </Container>
   );
 };

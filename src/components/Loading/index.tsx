@@ -3,27 +3,13 @@ import { Spinner } from 'react-bootstrap';
 const Loading = () => {
   return (
     <>
-      <Spinner variant="primary" animation="grow">
-        Loading...
-      </Spinner>
-      <Spinner variant="secondary" animation="grow">
-        Loading...
-      </Spinner>
-      <Spinner variant="success" animation="grow">
-        Loading...
-      </Spinner>
-      <Spinner variant="danger" animation="grow">
-        Loading...
-      </Spinner>
-      <Spinner variant="warning" animation="grow">
-        Loading...
-      </Spinner>
-      <Spinner variant="info" animation="grow">
-        Loading...
-      </Spinner>
-      <Spinner variant="dark" animation="grow">
-        Loading...
-      </Spinner>
+      <Spinner variant="primary" animation="grow" />
+      <Spinner variant="secondary" animation="grow" />
+      <Spinner variant="success" animation="grow" />
+      <Spinner variant="danger" animation="grow" />
+      <Spinner variant="warning" animation="grow" />
+      <Spinner variant="info" animation="grow" />
+      <Spinner variant="dark" animation="grow" />
     </>
   );
 };
